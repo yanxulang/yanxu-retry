@@ -2,6 +2,14 @@
 
 言韧（`yanxu-retry`）是言序的重试、指数退避和断路器辅助库。策略与执行分离，因而业务代码可以在测试中跳过真实等待，同时验证完全相同的次数和退避逻辑。
 
+## 安装
+
+使用言包添加到当前项目：
+
+```sh
+yanbao add 言韧 --git https://github.com/yanxulang/yanxu-retry.git --version '^0.1'
+```
+
 ```yanxu
 引「包:言韧」为 言韧；
 
