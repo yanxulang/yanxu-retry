@@ -22,6 +22,9 @@ yanxu 兼容 benchmarks --json
 yanxu 包 锁 .
 yanxu 包 锁 --离线 .
 yanxu 编 . -o yanxu-retry.yxb --release
+yanxu 包 锁 integration/消费者
+yanxu 包 运行 integration/消费者
+yanxu 编 integration/消费者 -o yanxu-retry-consumer.yxb --release
 ```
 
 所有文卷还须分别通过`yanxu 查`；生成 API 必须与`docs/API.md`逐字一致。提交前运行`git diff --check`。

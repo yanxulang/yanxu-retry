@@ -1,0 +1,24 @@
+lock_version = 2
+manifest_checksum = "b4abbdd5ca9ea026a42cfd03afc8dc8d86990d16334012d5b0b1c46976ec18a3"
+target = "aarch64-apple-darwin"
+generator = "1.1.8"
+
+[root_dependencies]
+"言韧" = "言韧@1.0.0#e526f172db95-8e8769fec70e4947"
+
+[root_dev_dependencies]
+
+[[package]]
+id = "言韧@1.0.0#e526f172db95-8e8769fec70e4947"
+name = "言韧"
+version = "1.0.0"
+source = "path:../.."
+checksum = "8e8769fec70e49470af8166385ec48fa3041e7f314ca5af9e759bfa3eaebf7a1"
+entry = "src/言韧.yx"
+target = "aarch64-apple-darwin"
+minimum_yanxu = ">=1.1.6"
+
+[package.dependencies]
+
+[package.exports]
+"默认" = "src/言韧.yx"
