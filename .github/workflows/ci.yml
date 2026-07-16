@@ -88,9 +88,8 @@ jobs:
           sed '/^target = /d' integration/消费者/言序.lock > "$RUNNER_TEMP/consumer.lock.actual"
           cmp "$RUNNER_TEMP/root.lock.expected" "$RUNNER_TEMP/root.lock.actual"
           cmp "$RUNNER_TEMP/consumer.lock.expected" "$RUNNER_TEMP/consumer.lock.actual"
-          cp "$RUNNER_TEMP/root.lock.before" 言序.lock
-          cp "$RUNNER_TEMP/consumer.lock.before" integration/消费者/言序.lock
-          git diff --exit-code
+          git diff --exit-code -- . ':(exclude,top)言序.lock' ':(exclude,top)integration/消费者/言序.lock'
+          test -z "$(git ls-files --others --exclude-standard)"
 
   metadata:
     name: 新增元数据门禁
