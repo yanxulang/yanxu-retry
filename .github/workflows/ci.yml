@@ -71,6 +71,8 @@ jobs:
           "$yanxu" 兼容 benchmarks --json > "$RUNNER_TEMP/benchmarks-compat.json"
           "$yanxu" 兼容 integration/消费者 --json > "$RUNNER_TEMP/consumer-compat.json"
           for report in "$RUNNER_TEMP/tests-compat.json" "$RUNNER_TEMP/examples-compat.json" "$RUNNER_TEMP/benchmarks-compat.json" "$RUNNER_TEMP/consumer-compat.json"; do jq -e '[.cases[].passed] | all' "$report"; cat "$report"; done
+          cp 言序.lock "$RUNNER_TEMP/root.lock.before"
+          cp integration/消费者/言序.lock "$RUNNER_TEMP/consumer.lock.before"
           "$yanxu" 包 锁 .
           "$yanxu" 包 锁 --离线 .
           "$yanxu" 包 锁 integration/消费者
@@ -80,6 +82,14 @@ jobs:
           "$yanxu" 编 integration/消费者 -o "$RUNNER_TEMP/yanxu-retry-consumer.yxb" --release
           test -s "$RUNNER_TEMP/yanxu-retry-release.yxb"
           test -s "$RUNNER_TEMP/yanxu-retry-consumer.yxb"
+          sed '/^target = /d' "$RUNNER_TEMP/root.lock.before" > "$RUNNER_TEMP/root.lock.expected"
+          sed '/^target = /d' 言序.lock > "$RUNNER_TEMP/root.lock.actual"
+          sed '/^target = /d' "$RUNNER_TEMP/consumer.lock.before" > "$RUNNER_TEMP/consumer.lock.expected"
+          sed '/^target = /d' integration/消费者/言序.lock > "$RUNNER_TEMP/consumer.lock.actual"
+          cmp "$RUNNER_TEMP/root.lock.expected" "$RUNNER_TEMP/root.lock.actual"
+          cmp "$RUNNER_TEMP/consumer.lock.expected" "$RUNNER_TEMP/consumer.lock.actual"
+          cp "$RUNNER_TEMP/root.lock.before" 言序.lock
+          cp "$RUNNER_TEMP/consumer.lock.before" integration/消费者/言序.lock
           git diff --exit-code
 
   metadata:
