@@ -4,16 +4,16 @@ target = "aarch64-apple-darwin"
 generator = "1.1.8"
 
 [root_dependencies]
-"言韧" = "言韧@1.0.0#e526f172db95-8e8769fec70e4947"
+"言韧" = "言韧@1.0.0#e526f172db95-d70ab9dbc283e841"
 
 [root_dev_dependencies]
 
 [[package]]
-id = "言韧@1.0.0#e526f172db95-8e8769fec70e4947"
+id = "言韧@1.0.0#e526f172db95-d70ab9dbc283e841"
 name = "言韧"
 version = "1.0.0"
 source = "path:../.."
-checksum = "8e8769fec70e49470af8166385ec48fa3041e7f314ca5af9e759bfa3eaebf7a1"
+checksum = "d70ab9dbc283e841da2c9e8bad2a279656fe07e72432a5981ccae93480e6161e"
 entry = "src/言韧.yx"
 target = "aarch64-apple-darwin"
 minimum_yanxu = ">=1.1.6"
